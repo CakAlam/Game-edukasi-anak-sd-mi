@@ -1,0 +1,196 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%; /* Lebar container game yang lebih lebar */
+    max-width: 800px; /* Lebar maksimum container game */
+}
+
+#map-container {
+    width: 100%; /* Peta mengisi lebar container */
+    aspect-ratio: 8 / 5; /* Rasio aspek peta yang lebih lebar dan tinggi */
+    background-image: url('../../assets/peta.png'); /* Path yang benar untuk gambar peta */
+    background-size: cover;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-icon {
+    position: absolute;
+    width: 48px; /* Ukuran ikon lebih besar */
+    height: 48px; /* Ukuran ikon lebih besar */
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Efek transisi untuk kemunculan dan pergerakan */
+}
+
+.masjid-icon {
+    background-image: url('../../assets/masjid-icon.png');
+}
+
+.gereja-icon {
+    background-image: url('../../assets/gereja-icon.png');
+}
+
+.pura-icon {
+    background-image: url('../../assets/pura-icon.png');
+}
+
+.vihara-icon {
+    background-image: url('../../assets/vihara-icon.png');
+}
+
+.sekolah-icon {
+    background-image: url('../../assets/icon-umum.png'); /* Ganti dengan ikon sekolah jika ada */
+}
+
+.taman-icon {
+    background-image: url('../../assets/icon-umum.png'); /* Ganti dengan ikon taman jika ada */
+}
+
+.hidden-icon {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8); /* Efek muncul dari kecil */
+}
+
+#player-pawn {
+    position: absolute;
+    width: 50px; /* Ukuran pion disesuaikan */
+    height: 50px; /* Ukuran pion disesuaikan */
+    background-image: url('../../assets/pion-anak.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: grab;
+    z-index: 25;
+    transition: left 1s ease-in-out, top 1s ease-in-out; /* Animasi pergerakan pion */
+}
+
+.miniature-item {
+    position: absolute;
+    width: 40px; /* Ukuran miniatur disesuaikan */
+    height: 40px; /* Ukuran miniatur disesuaikan */
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 15;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.buku-icon {
+    background-image: url('../../assets/miniature-buku.png');
+}
+
+.bendera-icon {
+    background-image: url('../../assets/miniature-bendera.png');
+}
+
+.alatmusik-icon {
+    background-image: url('../../assets/miniature-alatmusik.png');
+}
+
+#icon-info-container {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    display: none;
+    font-size: 0.9em;
+}
+
+#scenario-card {
+    background-color: #fffde7;
+    border: 1px solid #ffe0b2;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.option-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Padding tombol jawaban disesuaikan */
+    border-radius: 6px; /* Radius border tombol jawaban disesuaikan */
+    cursor: pointer;
+    margin: 8px; /* Margin tombol jawaban disesuaikan */
+    font-size: 1.1em; /* Ukuran font tombol jawaban disesuaikan */
+    min-width: 220px; /* Lebar minimum tombol jawaban disesuaikan */
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.3s ease;
+}
+
+.option-btn:hover {
+    background-color: #388e3c;
+}
+
+#ui-container {
+    display: flex;
+    gap: 15px; /* Gap antar elemen UI disesuaikan */
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+#point-display {
+    background-color: #c8e6c9;
+    color: #1b5e20;
+    padding: 10px 20px; /* Padding tampilan poin disesuaikan */
+    border-radius: 6px; /* Radius border tampilan poin disesuaikan */
+    font-weight: bold;
+    font-size: 1.1em; /* Ukuran font tampilan poin disesuaikan */
+}
+
+button#next-scenario-btn {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Padding tombol next disesuaikan */
+    border-radius: 6px; /* Radius border tombol next disesuaikan */
+    cursor: pointer;
+    font-size: 1.1em; /* Ukuran font tombol next disesuaikan */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: background-color 0.3s ease;
+}
+
+button#next-scenario-btn:hover {
+    background-color: #1976d2;
+}
+
+.feedback-message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    font-size: 1em; /* Ukuran font feedback disesuaikan */
+    font-style: italic;
+}
